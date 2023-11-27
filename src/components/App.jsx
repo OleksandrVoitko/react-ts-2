@@ -22,6 +22,14 @@ export class App extends Component {
   };
 
   handleSubmit = (name, number) => {
+    if (
+      this.state.contacts.find(
+        contact => contact.name.toLocaleLowerCase() === name.toLocaleLowerCase()
+      )
+    ) {
+      alert(`${name} is already in contacts!`);
+      return;
+    }
     const newContact = {
       id: nanoid(),
       name,

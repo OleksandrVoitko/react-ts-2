@@ -44,5 +44,3 @@ export class ContactForm extends Component {
     );
   }
 }
-
-// export function ContactForm({ name, number, onChange, onSubmit }) {}
