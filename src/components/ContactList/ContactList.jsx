@@ -1,13 +1,22 @@
-export function ContactList({ contacts }) {
+import { Li } from './ContactList.styled';
+
+export function ContactList({ contacts, handleDeleteContact }) {
   return (
     <>
       <ul>
         {contacts.map(contact => (
-          <li key={contact.id}>
+          <Li key={contact.id}>
             <p>
               {contact.name}: {contact.number}
             </p>
-          </li>
+            <button
+              type="button"
+              className="btn btn-danger"
+              onClick={() => handleDeleteContact(contact.id)}
+            >
+              Delete
+            </button>
+          </Li>
         ))}
       </ul>
     </>
