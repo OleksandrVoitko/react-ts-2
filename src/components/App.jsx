@@ -4,9 +4,20 @@ import { ContactForm } from './ContactForm/ContactForm';
 import { Statistics } from './Statistics/Statistics';
 import { nanoid } from 'nanoid';
 import { ContactList } from './ContactList/ContactList';
+import { Filter } from './Filter/Filter';
 
 export class App extends Component {
-  state = { contacts: [], name: '', number: '' };
+  state = {
+    contacts: [
+      { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
+      { id: 'id-2', name: 'Hermione Kline', number: '443-89-12' },
+      { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
+      { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
+    ],
+    name: '',
+    number: '',
+    filter: '',
+  };
 
   handleChange = ({ target }) => {
     this.setState({ [target.name]: target.value });
@@ -23,6 +34,13 @@ export class App extends Component {
     this.setState({ name: '', number: '' });
   };
 
+  getFilteredContacts = () => {
+    const { contacts, filter } = this.state;
+    return contacts.filter(({ name }) =>
+      name.toLocaleLowerCase().includes(filter.toLocaleLowerCase())
+    );
+  };
+
   render() {
     return (
       <Wrapper>
@@ -35,10 +53,8 @@ export class App extends Component {
           onSubmit={this.handleSubmit}
         />
         <h2>Contacts</h2>
-        <ContactList
-          contacts={this.state.contacts}
-          onChange={this.handleChange}
-        />
+        <Filter filter={this.state.filter} onChange={this.handleChange} />
+        <ContactList contacts={this.getFilteredContacts()} />
       </Wrapper>
     );
   }

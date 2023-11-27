@@ -7,7 +7,6 @@ export function ContactForm({ name, number, onChange, onSubmit }) {
           name="name"
           type="text"
           className="form-control"
-          id="exampleInputEmail1"
           required
           value={name}
           onChange={onChange}
@@ -15,16 +14,15 @@ export function ContactForm({ name, number, onChange, onSubmit }) {
         <label className="form-label">Number</label>
         <input
           name="number"
-          type="tel"
+          type="telephone"
           className="form-control"
-          id="exampleInputEmail1"
           required
           value={number}
           onChange={onChange}
         />
       </div>
       <button type="submit" className="btn btn-primary">
-        Submit
+        Add
       </button>
     </form>
   );
