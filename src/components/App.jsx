@@ -14,8 +14,6 @@ export class App extends Component {
       { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
       { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
     ],
-    name: '',
-    number: '',
     filter: '',
   };
 
@@ -23,15 +21,13 @@ export class App extends Component {
     this.setState({ [target.name]: target.value });
   };
 
-  handleSubmit = e => {
-    e.preventDefault();
+  handleSubmit = (name, number) => {
     const newContact = {
       id: nanoid(),
-      name: this.state.name,
-      number: this.state.number,
+      name,
+      number,
     };
     this.setState(({ contacts }) => ({ contacts: [...contacts, newContact] }));
-    this.setState({ name: '', number: '' });
   };
 
   getFilteredContacts = () => {
@@ -46,12 +42,7 @@ export class App extends Component {
       <Wrapper>
         <Statistics />
         <h1>PhoneBook</h1>
-        <ContactForm
-          name={this.state.name}
-          number={this.state.number}
-          onChange={this.handleChange}
-          onSubmit={this.handleSubmit}
-        />
+        <ContactForm onSubmit={this.handleSubmit} />
         <h2>Contacts</h2>
         <Filter filter={this.state.filter} onChange={this.handleChange} />
         <ContactList contacts={this.getFilteredContacts()} />
