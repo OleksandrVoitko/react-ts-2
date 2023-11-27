@@ -1,15 +1,32 @@
+import { Button } from './FeedbackOptions.styled';
+
 export function FeedbackOptions({ handleClick }) {
   return (
     <div>
-      <button name="good" type="button" onClick={handleClick}>
+      <Button
+        name="good"
+        type="button"
+        className="btn btn-primary"
+        onClick={handleClick}
+      >
         Goog
-      </button>
-      <button name="neutral" type="button" onClick={handleClick}>
+      </Button>
+      <Button
+        name="neutral"
+        type="button"
+        className="btn btn-primary"
+        onClick={handleClick}
+      >
         Neutral
-      </button>
-      <button name="bad" type="button" onClick={handleClick}>
+      </Button>
+      <Button
+        name="bad"
+        type="button"
+        className="btn btn-primary"
+        onClick={handleClick}
+      >
         Bad
-      </button>
+      </Button>
     </div>
   );
 }
