@@ -18,20 +18,22 @@ export class ContactForm extends Component {
     return (
       <form onSubmit={this.handleSubmit}>
         <div className="mb-3">
-          <label className="form-label">Name</label>
+          <label className="form-label" htmlFor="inputName">Name</label>
           <input
             name="name"
             type="text"
             className="form-control"
+            id="inputName"
             required
             value={this.state.name}
             onChange={this.handleChange}
           />
-          <label className="form-label">Number</label>
+          <label className="form-label" htmlFor="inputNumber"> Number</label>
           <input
             name="number"
             type="telephone"
             className="form-control"
+            id="inputNumber"
             required
             value={this.state.number}
             onChange={this.handleChange}
